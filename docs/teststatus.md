@@ -1,6 +1,6 @@
 # Teststatus
 
-Stand: 20 oktober 2026. De volledige ongewijzigde Linux-frameworktestset is groen op commit `9d2410ddd4f3d835782e1fbd308bc1696be6aed3`: [Acceptatie, alle 14 controles geslaagd](https://github.com/rvd-gmpplus/scenic-e/actions/runs/39427548325).
+Stand: 20 oktober 2026. De volledige ongewijzigde Linux-frameworktestset is groen op commit `9d2410ddd4f3d835782e1fbd308bc1696be6aed3`: [Acceptatie, alle 13 controles geslaagd](https://github.com/rvd-gmpplus/scenic-e/actions/runs/39427548325).
 
 Dit is een eerste schematische implementatie; de geometrie is geen gevalideerd Renault-CAD-model.
 
@@ -13,7 +13,7 @@ Alle 49 generieke bestanden zijn byte voor byte gelijk aan laguna3 main `3216616
 | Controle | Uitkomst |
 | --- | --- |
 | GitHub-CI op de actuele geometrie | Geslaagd: lint, reproduceerbare pagina, nummergegevens, framework, smoke, integrity, silhouette en budgetpoort |
-| Volledige frameworktestset | Alle 14 controles geslaagd in één GitHub-run, inclusief strikte openers, verborgen delen, interactie, publicatiepagina, beelden, visdiff en labelankers |
+| Volledige frameworktestset | Alle 13 controles geslaagd in één GitHub-run, inclusief strikte openers, verborgen delen, interactie, publicatiepagina, beelden, visdiff en labelankers |
 | Volledige onderdelenboom | In GitHub gecontroleerd tegen data/tree.json |
 | Interactie desktop en mobiel | 65 controles, 0 fouten na de grote herstelronde |
 | Verborgen onderdelen | Geen onterecht verborgen onderdelen, gesloten, alles open en zeven afzonderlijke openstanden |
@@ -25,7 +25,7 @@ Alle 49 generieke bestanden zijn byte voor byte gelijk aan laguna3 main `3216616
 | Labelankers | Beide CI-runs gelijk: 85 labels, 77 met een eigen oppervlak, 63 met vrije zichtlijn. Dit is de eerste referentie, geen claim dat ieder label vrij ligt |
 | macOS, echte telefoon, onafhankelijke reviewer | Niet uitgevoerd in deze omgeving |
 
-De volledige testlijst is `lint smoke integ sil inner opentest itest tri pub stats shots visdiff anchor`. Alle 14 eindigen in de definitieve acceptatierun met exitcode 0; de framework- en onderdelenboomcontrole zijn bovendien vooraf apart uitgevoerd. De testset en grenswaarden zijn ongewijzigd gebleven. [Samenvatting van de CI-uitvoer](testresultaten/acceptatie.txt).
+De volledige testlijst is `lint smoke integ sil inner opentest itest tri pub stats shots visdiff anchor`. Alle 13 eindigen in de definitieve acceptatierun met exitcode 0; de framework- en onderdelenboomcontrole zijn bovendien vooraf apart uitgevoerd. De testset en grenswaarden zijn ongewijzigd gebleven. [Samenvatting van de CI-uitvoer](testresultaten/acceptatie.txt).
 
 De geometrie- en CI-cijfers staan in [cijfers.md](cijfers.md) en [testresultaten/stats.json](testresultaten/stats.json). De meetuitkomsten zijn ontwikkelcontroles; de silhouetdata is een geschatte ontwerpreferentie, geen onafhankelijke fotometing. Voor een aparte MY27-specificatie en werkelijke interne constructies is aanvullend bronmateriaal nodig.
 

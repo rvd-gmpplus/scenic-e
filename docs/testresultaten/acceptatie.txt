@@ -1,0 +1,19 @@
+GitHub Actions: https://github.com/rvd-gmpplus/scenic-e/actions/runs/39427548325
+Bron: 9d2410ddd4f3d835782e1fbd308bc1696be6aed3
+Ongewijzigd tools/orkestratie/finaltests.sh; 13 scripts, alle grenswaarden gehandhaafd.
+Framework en onderdelenboom zijn bovendien vooraf gecontroleerd.
+
+2026-10-20T13:11:15.2973651Z == lint: ok (exit 0 (0s)) lint ok exit 0 (0s) 
+2026-10-20T13:11:15.3003185Z == smoke: ok (exit 0 (66s)) laadtijd 390x844: 33.33 s geen console-fouten of -waarschuwingen 
+2026-10-20T13:11:15.3031846Z == integ: ok (exit 0 (33s)) laadtijd 1100x700: 5.01 s geen console-fouten of -waarschuwingen 
+2026-10-20T13:11:15.3060762Z == sil: ok (exit 0 (21s)) laadtijd 800x600: 1.77 s geen console-fouten of -waarschuwingen 
+2026-10-20T13:11:15.3089100Z == inner: ok (exit 0 (46s)) laadtijd 1280x800: 2.02 s geen console-fouten of -waarschuwingen 
+2026-10-20T13:11:15.3117262Z == opentest: ok (exit 0 (109s))  opentest klaar in 109 s: 0 fouten, 0 meldingen 
+2026-10-20T13:11:15.3146622Z == itest: ok (exit 0 (59s)) geen console-fouten of -waarschuwingen 65 controles, 0 fouten 
+2026-10-20T13:11:15.3176419Z == tri: ok (exit 0 (12s)) geen console-fouten of -waarschuwingen budgetpoort: ok 
+2026-10-20T13:11:15.3205248Z == pub: ok (exit 0 (34s)) [390x844 pages] klaar in 0.7 s, three r147, touch-action none, user-select none, touch-callout uit: True, horizontale scroll: False, nummerpaden: 1 PUBLICATIEROOKTEST OK 
+2026-10-20T13:11:15.3232641Z == stats: ok (exit 0 (33s)) laadtijd 1280x800: 1.94 s geen console-fouten of -waarschuwingen 
+2026-10-20T13:11:15.3261518Z == shots: ok (exit 0 (84s)) laadtijd 1280x800: 1.76 s geen console-fouten of -waarschuwingen 
+2026-10-20T13:11:15.3289760Z == visdiff: ok (exit 0 (1s))  VISDIFF: 20 van 20 beelden binnen de drempel 
+2026-10-20T13:11:15.3318452Z == anchor: ok (exit 0 (46s)) poort tegen docs/baseline/anchorcheck.json: ok geschreven: /home/runner/work/scenic-e/scenic-e/uit/acceptatie/anchorcheck.json 
+2026-10-20T13:11:15.3319001Z ALLES GROEN

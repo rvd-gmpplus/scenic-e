@@ -1,8 +1,0 @@
-opentest: 7 openers in de pagina, 1 getoetst; uitvoer in uit/achterklep/opentest
-  monsterpunten 400, stappen 16, stralen 160x100, uitzonderingen 0
-
-== Achterklep (hinge, Carrosserie/Achterklep)
-   1 eindstand: GOED (gemeten hoek 69 graden van 69; 3 bewegende meshes, 0 vaste)
-   2 ondergrens: GOED Achterklep: 69 graden, min 57 graden
-   3 botsing: GOED: 0 meshes geraakt door 0 monsterpunten (van 401; 222 obstakels, 224 contactparen bij u 0 genegeerd, 0 uitgezonderd)
-   4 blootleggen: GOED: 0 treffers op verborgen knopen (grens 0), 124 van 8987 stralen door de opening in het niets (1.4 %, grens 2.0 %); camera open.look, richting [0.394, 0.473, -0.788]
