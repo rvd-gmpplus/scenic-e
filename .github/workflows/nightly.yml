@@ -1,0 +1,57 @@
+name: nightly
+# De lange set: itest met poorten, opentest --strikt-min, ui_inner --open --strict en pubsmoke. Richting 1 tot 2 uur op een
+# gedeelde runner met software-rendering. Een rode nachtrun is een melding (issue of bericht), geen stop voor het werk.
+on:
+  schedule:
+    - cron: '23 2 * * *'
+  workflow_dispatch:
+jobs:
+  lang:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    env:
+      MODEL_TIMEOUT_MS: '600000'
+      PUBSMOKE_READY_MS: '60000'
+      ITEST_GATES: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: testomgeving
+        run: |
+          python3 -m pip install --quiet -r requirements.txt
+          python3 -m playwright install --with-deps chromium
+          python3 tools/harness.py --ensure-three
+      - name: itest met poorten
+        run: python3 tools/itest.py
+      - name: opentest strikt
+        run: python3 tools/opentest.py --strikt-min --out uit/opentest
+      - name: ui_inner strikt
+        run: python3 tools/ui_inner.py --open --strict
+      - name: pncheck met boom
+        run: python3 tools/pncheck.py --tree
+      - name: pubsmoke
+        run: python3 tools/pubsmoke.py
+      - name: "labelankers (poort, geen van beide totalen daalt)"
+        run: python3 tools/anchorcheck.py --json uit/anchorcheck.json --basis docs/baseline/anchorcheck.json
+      - name: "visuele regressie (informatie tot de ruisvloer op de runner bekend is)"
+        continue-on-error: true
+        run: |
+          python3 tools/orkestratie/presetshots.py . uit/presets
+          python3 tools/visdiff.py uit/presets docs/baseline --uit uit/visdiff
+      - name: stats en cijfers
+        run: |
+          python3 tools/orkestratie/stats.py "$PWD" uit/stats.json
+          python3 tools/tri.py --json uit/tri.json
+          python3 tools/orkestratie/cijfers.py uit/stats.json uit/tri.json > uit/cijfers.md
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: nightly-uitvoer
+          path: uit
+          retention-days: 14

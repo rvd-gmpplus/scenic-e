@@ -1,0 +1,11 @@
+__pycache__/
+*.tgz
+test/
+.claude/worktrees/
+.DS_Store
+node_modules/
+# uitvoer van testruns en poorten (bewaar ze in het scratchpad, niet in de repo)
+g5*/
+golf*/
+opentest-*/
+uit/

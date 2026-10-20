@@ -1,0 +1,57 @@
+name: ci
+# Push-job: lint, index.html hoort bij src/, rooktest, integriteit, silhouet en de budgetpoort. Richting 5 tot 10 minuten.
+# De lange set (itest met poorten, opentest, ui_inner --strict, pubsmoke) draait in nightly.yml.
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  snel:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MODEL_TIMEOUT_MS: '300000'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: testomgeving
+        run: |
+          python3 -m pip install --quiet -r requirements.txt
+          python3 -m playwright install --with-deps chromium
+          python3 tools/harness.py --ensure-three
+      - name: lint
+        run: python3 build.py --lint
+      - name: index.html hoort bij src/
+        run: |
+          python3 build.py
+          git diff --stat --exit-code index.html || { echo "::error::index.html is niet herbouwd uit src/ (python3 build.py)"; exit 1; }
+      - name: pncheck (nummergegevens reproduceerbaar)
+        run: python3 tools/pncheck.py
+      - name: framework (generieke laag autoneutraal, auto.json volledig)
+        run: python3 tools/framework.py check
+      - name: smoke
+        run: python3 tools/smoke.py
+      - name: integrity
+        run: python3 tools/integrity.py
+      - name: silhouette
+        run: python3 tools/silhouette.py
+      - name: budgetpoort
+        run: python3 tools/tri.py --gate
+      - name: testlijst van finaltests.sh
+        run: |
+          grep -q 'TESTS="lint smoke integ sil inner opentest itest tri pub stats shots visdiff anchor"' tools/orkestratie/finaltests.sh || { echo "::error::de testlijst in finaltests.sh wijkt af van de verwachting"; exit 1; }
+      - name: haak voor extra tests in finaltests.sh
+        run: |
+          grep -qF 'framework.py extra-namen' tools/orkestratie/finaltests.sh || { echo "::error::finaltests.sh mist de haak voor extra tests (framework.py extra-namen)"; exit 1; }
+          grep -qF 'framework.py extra "$n"' tools/orkestratie/finaltests.sh || { echo "::error::finaltests.sh mist de aanroep van de extra tests (framework.py extra \"\$n\")"; exit 1; }
+          echo "extra tests van deze auto: [$(python3 tools/framework.py extra-namen)]"

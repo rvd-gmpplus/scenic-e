@@ -1,0 +1,82 @@
+{
+  "root": [
+    "Renault Scénic E-Tech electric"
+  ],
+  "main": [
+    "Carrosserie",
+    "Interieur",
+    "Aandrijflijn",
+    "Onderstel",
+    "Koeling en luchtinlaat",
+    "Uitlaatsysteem",
+    "Brandstofsysteem",
+    "Elektrisch systeem"
+  ],
+  "root_children_order": [
+    "Carrosserie",
+    "Interieur",
+    "Aandrijflijn",
+    "Onderstel",
+    "Koeling en luchtinlaat",
+    "Uitlaatsysteem",
+    "Brandstofsysteem",
+    "Elektrisch systeem"
+  ],
+  "onderstel_children": [
+    "Vooras en stuurinrichting",
+    "Achteras",
+    "Wielen",
+    "Remsysteem"
+  ],
+  "contains": [],
+  "content": {},
+  "openers": [
+    "Renault Scénic E-Tech electric/Carrosserie/Motorkap",
+    "Renault Scénic E-Tech electric/Carrosserie/Achterklep",
+    "Renault Scénic E-Tech electric/Carrosserie/Portier rechtsvoor",
+    "Renault Scénic E-Tech electric/Carrosserie/Portier rechtsachter",
+    "Renault Scénic E-Tech electric/Carrosserie/Portier linksvoor",
+    "Renault Scénic E-Tech electric/Carrosserie/Portier linksachter",
+    "Renault Scénic E-Tech electric/Carrosserie/Laadklep"
+  ],
+  "preset_ids": [
+    "assembled",
+    "main",
+    "bodyOff",
+    "xray",
+    "everything",
+    "tour",
+    "battery",
+    "engine",
+    "drive",
+    "charging",
+    "cooling",
+    "chassis",
+    "wheel",
+    "body",
+    "roof",
+    "interior",
+    "openHood",
+    "openDoors",
+    "openTrunk",
+    "openCharge",
+    "openAll"
+  ],
+  "triangle_budgets": {
+    "totaal": 180000,
+    "Carrosserie": 40000,
+    "Interieur": 35000,
+    "Aandrijflijn": 30000,
+    "Onderstel": 60000,
+    "Koeling en luchtinlaat": 10000,
+    "Elektrisch systeem": 20000
+  },
+  "motor": [
+    "Motor E-Tech"
+  ],
+  "elektrisch": [
+    "Tractieaccu",
+    "Laadapparatuur",
+    "Omvormer"
+  ]
+}

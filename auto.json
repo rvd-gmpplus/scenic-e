@@ -1,0 +1,85 @@
+{
+  "_uitleg": "Alles wat per auto verschilt in de generieke laag (build.py, core.js, app1.js, presets.js, app2-*.js, head.html). build.py zet head.html-velden in op {{naam}} en geeft de JavaScript een bevroren object AUTO. Zie docs/framework.md.",
+  "id": "scenic-e",
+  "hook": "__scenic",
+  "merk": "Renault",
+  "wortel": "Renault Scénic E-Tech electric",
+  "titel": "Scénic E-Tech electric explosietekening",
+  "h1": "Scénic E-Tech",
+  "h1sub": "electric · long range",
+  "sub": "2026 / 2027 · elektrische crossover · <b>220 pk · 89 kWh</b>",
+  "beschrijving": "Interactieve 3D-explosietekening van de Renault Scénic E-Tech electric, actuele MY26 long range als basis voor 2026/2027. Met accupakket, elektromotor, interieur en openende portieren.",
+  "ogBeschrijving": "Verken de elektrische Scénic: uitklapbare onderdelen, accupakket en openende portieren.",
+  "ogBeeld": "",
+  "canvasLabel": "3D-explosietekening van een Renault Scénic E-Tech electric. Klik op een onderdeel om het uit te klappen.",
+  "notitie": "Schematisch model op basis van de actuele Nederlandse MY26-specificatie (geraadpleegd 20 oktober 2026). Een afzonderlijke MY27-specificatie is niet bevestigd. Vormen, interne constructies, aantallen accumodules en posities zijn benaderingen; geen CAD-model of montagevoorschrift. Geen geverifieerde onderdeelnummers beschikbaar.",
+  "openUitleg": "Scénic E-Tech electric long range, 220 pk met 89 kWh. Open de motorkap, vier portieren, achterklep of laadklep. Het vaste Solarbay-panoramadak schuift niet open. De techniek is schematisch weergegeven.",
+  "pnType": "Scénic E-Tech electric MY26 long range 220 pk / 89 kWh; MY27 nog niet afzonderlijk bevestigd",
+  "hintVersie": "v1",
+  "pnToelichting": false,
+  "docshots": [
+    [
+      "gemonteerd",
+      "assembled"
+    ],
+    [
+      "hoofdgroepen",
+      "main"
+    ],
+    [
+      "accupakket",
+      "battery"
+    ],
+    [
+      "elektromotor",
+      "engine"
+    ],
+    [
+      "interieur",
+      "interior"
+    ],
+    [
+      "openen-alles",
+      "openAll"
+    ]
+  ],
+  "verboden": [
+    "Scénic",
+    "Scenic",
+    "scenic",
+    "89 kWh"
+  ],
+  "_voorvoegsels": {
+    "body.js": [
+      "bod"
+    ],
+    "bodyparts.js": [
+      "bod"
+    ],
+    "panorama.js": [
+      "bod",
+      "pan"
+    ],
+    "engine1.js": [
+      "eng"
+    ],
+    "engine2.js": [
+      "eng"
+    ],
+    "engine3.js": [
+      "eng"
+    ],
+    "drivetrain.js": [
+      "drv"
+    ],
+    "chassis.js": [
+      "chs"
+    ],
+    "interior.js": [
+      "int"
+    ],
+    "systems.js": [
+      "sys"
+    ]
+  }
+}

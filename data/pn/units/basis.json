@@ -1,0 +1,17 @@
+{
+  "basis:tractieaccu": {
+    "n": "Tractieaccu EV89 (geen nummer geverifieerd)",
+    "st": "nietgevonden",
+    "oe": [],
+    "am": [],
+    "var": "Actuele MY26 EV89 long range; kies een artikel uitsluitend op geverifieerde catalogusgegevens.",
+    "per": "accupakket",
+    "note": "Geen catalogusnummer geverifieerd. Brochure is alleen bewijs voor de capaciteit, niet voor een artikelnummer.",
+    "src": [
+      [
+        "https://www.renault.nl/elektrische-autos/scenic.html",
+        "Renault-modelpagina; geen onderdelencatalogus"
+      ]
+    ]
+  }
+}

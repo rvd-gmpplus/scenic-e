@@ -1,0 +1,7 @@
+* text=auto
+# de CSV wordt door build_pn.py met CRLF geschreven en blijft byte voor byte zoals gebouwd
+*.csv -text
+*.png binary
+*.webp binary
+index.html text eol=lf
+docs/v1/index.html text eol=lf

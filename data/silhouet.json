@@ -1,0 +1,76 @@
+{
+  "_uitleg": "Ontwerpreferentie uit gepubliceerde hoofdmaten en geschatte zijproporties. Geen onafhankelijke fotometing; toets bewaakt alleen de vastgelegde proporties.",
+  "top": [
+    [
+      2.15,
+      1.0
+    ],
+    [
+      1.5,
+      1.04
+    ],
+    [
+      0.2,
+      1.574
+    ],
+    [
+      -0.7,
+      1.574
+    ],
+    [
+      -1.7,
+      1.31
+    ]
+  ],
+  "plan": [
+    [
+      2.13,
+      0.87
+    ],
+    [
+      1.5,
+      0.922
+    ],
+    [
+      0.3,
+      0.914
+    ],
+    [
+      -0.5,
+      0.914
+    ],
+    [
+      -1.5,
+      0.922
+    ],
+    [
+      -2.13,
+      0.88
+    ]
+  ],
+  "belt": [
+    [
+      0.3,
+      1.075
+    ],
+    [
+      -0.4,
+      1.085
+    ]
+  ],
+  "axf": 1.3925,
+  "axr": -1.3925,
+  "neusMax": 0.932,
+  "staartMax": 0.932,
+  "tolAs": 0.035,
+  "tolOverhang": 0.05,
+  "maxBuiten": 0,
+  "planY": [
+    0.38,
+    1.09
+  ],
+  "beltY": [
+    1.05,
+    1.3
+  ]
+}
