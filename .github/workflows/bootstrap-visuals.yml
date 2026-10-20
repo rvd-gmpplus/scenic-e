@@ -1,0 +1,65 @@
+name: Visuele basis voorbereiden
+# Maakt uitsluitend een artefact; bestaande basisbeelden worden niet automatisch overschreven.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/bootstrap-visuals.yml']
+permissions:
+  contents: read
+concurrency:
+  group: bootstrap-visuals-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  basis:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MODEL_TIMEOUT_MS: '300000'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Testomgeving
+        run: |
+          python3 -m pip install --quiet -r requirements.txt
+          python3 -m playwright install --with-deps chromium
+          python3 tools/harness.py --ensure-three
+      - name: Bron en onderdelenboom
+        run: |
+          python3 build.py --lint
+          python3 build.py
+          git diff --exit-code index.html
+          python3 tools/framework.py check
+          python3 tools/pncheck.py --tree
+          mkdir -p uit/bootstrap/baseline
+          git rev-parse HEAD > uit/bootstrap/source-commit.txt
+      - name: Geometrie en cijfers
+        run: |
+          python3 tools/integrity.py
+          python3 tools/silhouette.py
+          python3 tools/tri.py --gate --json uit/bootstrap/tri.json
+          python3 tools/orkestratie/stats.py "$PWD" uit/bootstrap/stats.json
+      - name: Alle presets en labelankers
+        run: |
+          python3 tools/orkestratie/presetshots.py . uit/bootstrap/presets
+          python3 tools/anchorcheck.py --json uit/bootstrap/anchorcheck.json
+      - name: Eerste regressiebasis voorbereiden
+        run: |
+          python3 tools/visdiff.py uit/bootstrap/presets uit/bootstrap/baseline --basislijn
+          cp uit/bootstrap/anchorcheck.json uit/bootstrap/baseline/anchorcheck.json
+          python3 tools/visdiff.py uit/bootstrap/presets uit/bootstrap/baseline --uit uit/bootstrap/visdiff
+      - name: Documentatiebeelden
+        run: python3 tools/orkestratie/docshots.py . uit/bootstrap/screenshots
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-bootstrap
+          path: uit/bootstrap
+          retention-days: 7
