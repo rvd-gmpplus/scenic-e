@@ -18,4 +18,8 @@ Centrale bron voor de maatvoering en gepubliceerde technische cijfers. Bron: act
 | EV89 DC-laden | tot 150 kW; 15–80% in 28 minuten | Renault-brochure; onder passende omstandigheden |
 | Modelmodules | 12 illustratieve blokken | Ontwerpkeuze, geen werkelijk moduleaantal |
 
-Aantallen onderdelen en driehoeken volgen uit de testuitvoer; zie teststatus. Deze tellingen beschrijven het model en niet het aantal onderdelen in de echte auto.
+## Modeltellingen
+
+Uit de definitieve Linux-rooktest en budgetcontrole: 310 knopen, 55 groepen, 255 meshonderdelen, maximale diepte 5 en 68.874 driehoeken. Twee meshonderdelen zijn de verborgen informatiemarkers van de niet aanwezige brandstof- en uitlaatgroepen. Er zijn 21 presets en zeven openers. Dit zijn modeltellingen, geen aantallen van onderdelen in de echte auto.
+
+De gecontroleerde totale bovengrens is 180.000 driehoeken. Details per hoofdgroep volgen uit `tools/tri.py --gate`; de teststatus staat in [teststatus.md](teststatus.md).

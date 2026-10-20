@@ -2,6 +2,7 @@
 
 ```sh
 bash tools/setup.sh
+python3 -m pip install -r requirements-visuals.txt
 python3 build.py --lint
 python3 tools/framework.py check
 python3 tools/pncheck.py --tree

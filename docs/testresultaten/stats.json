@@ -1,0 +1,77 @@
+{
+ "nodes": 310,
+ "groups": 55,
+ "parts": 255,
+ "maxDepth": 5,
+ "triangles": 68874,
+ "innerNodes": 30,
+ "perMainGroup": {
+  "Carrosserie": {
+   "parts": 95,
+   "tris": 18750
+  },
+  "Interieur": {
+   "parts": 26,
+   "tris": 8076
+  },
+  "Aandrijflijn": {
+   "parts": 31,
+   "tris": 7648
+  },
+  "Onderstel": {
+   "parts": 60,
+   "tris": 22420
+  },
+  "Koeling en luchtinlaat": {
+   "parts": 5,
+   "tris": 1416
+  },
+  "Uitlaatsysteem": {
+   "parts": 1,
+   "tris": 12
+  },
+  "Brandstofsysteem": {
+   "parts": 1,
+   "tris": 12
+  },
+  "Elektrisch systeem": {
+   "parts": 36,
+   "tris": 10540
+  }
+ },
+ "presets": 21,
+ "presetCategories": {
+  "Overzicht": 6,
+  "Elektrisch": 5,
+  "Onderstel": 2,
+  "Carrosserie": 2,
+  "Interieur": 1,
+  "Openen": 5
+ },
+ "timing": {
+  "batchesDone": true,
+  "script": 113,
+  "buildStart": 380,
+  "buildCar": 126,
+  "startUp": 560,
+  "render0": 582,
+  "firstFrame": 972,
+  "interactive": 993,
+  "pn": 1035,
+  "pnMs": 0,
+  "batches": 1065,
+  "ready": 7292
+ },
+ "drawCallsBatched": 61,
+ "drawCallsUnbatched": 246,
+ "batchStats": {
+  "on": true,
+  "groups": 1,
+  "built": 1,
+  "queued": 0,
+  "batchMeshes": 21,
+  "replaced": 206,
+  "mb": 4.1,
+  "capMb": 6.8
+ }
+}

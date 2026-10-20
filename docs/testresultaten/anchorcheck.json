@@ -1,0 +1,210 @@
+{
+ "commit": "eb496ef Installeer de aanvullende visuele afhankelijkheid zonder frameworkafwijking",
+ "viewport": "1280x800",
+ "totaal": {
+  "labels": 85,
+  "eigen": 77,
+  "vrij": 63
+ },
+ "presets": {
+  "assembled": {
+   "label": "Gemonteerd",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  },
+  "main": {
+   "label": "Hoofdgroepen",
+   "labels": 6,
+   "eigen": 6,
+   "vrij": 6,
+   "achter": [],
+   "lucht": []
+  },
+  "bodyOff": {
+   "label": "Techniek zichtbaar",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  },
+  "xray": {
+   "label": "Röntgen",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  },
+  "everything": {
+   "label": "Alles uit elkaar",
+   "labels": 8,
+   "eigen": 8,
+   "vrij": 5,
+   "achter": [
+    "Interieur achter Voorscherm links",
+    "Uitlaatsysteem achter Accudeksel",
+    "Brandstofsysteem achter Accudeksel"
+   ],
+   "lucht": []
+  },
+  "battery": {
+   "label": "Tractieaccu · 89 kWh",
+   "labels": 6,
+   "eigen": 6,
+   "vrij": 2,
+   "achter": [
+    "Bodembeschermplaat achter Accudeksel",
+    "Accubak achter Accudeksel",
+    "Accukoelplaat achter Accudeksel",
+    "Illustratieve accumodules achter Accudeksel"
+   ],
+   "lucht": []
+  },
+  "engine": {
+   "label": "Elektromotor",
+   "labels": 5,
+   "eigen": 2,
+   "vrij": 3,
+   "achter": [],
+   "lucht": [
+    "Bekrachtigde rotor",
+    "Eindschild rechts",
+    "Eindschild links"
+   ]
+  },
+  "drive": {
+   "label": "Aandrijflijn",
+   "labels": 3,
+   "eigen": 3,
+   "vrij": 3,
+   "achter": [],
+   "lucht": []
+  },
+  "charging": {
+   "label": "Laden en boordvoeding",
+   "labels": 4,
+   "eigen": 2,
+   "vrij": 4,
+   "achter": [],
+   "lucht": [
+    "DC-contact rechts",
+    "DC-contact links"
+   ]
+  },
+  "cooling": {
+   "label": "Warmtepomp en koeling",
+   "labels": 5,
+   "eigen": 4,
+   "vrij": 5,
+   "achter": [],
+   "lucht": [
+    "Warmtepompcompressor"
+   ]
+  },
+  "chassis": {
+   "label": "Onderstel",
+   "labels": 4,
+   "eigen": 3,
+   "vrij": 4,
+   "achter": [],
+   "lucht": [
+    "Remsysteem"
+   ]
+  },
+  "wheel": {
+   "label": "Wiel linksvoor",
+   "labels": 9,
+   "eigen": 8,
+   "vrij": 8,
+   "achter": [
+    "Velgrand achter Spaak 1"
+   ],
+   "lucht": [
+    "Naafdop"
+   ]
+  },
+  "body": {
+   "label": "Carrosserie",
+   "labels": 24,
+   "eigen": 24,
+   "vrij": 16,
+   "achter": [
+    "Onderlip achter achter Zijruit",
+    "Onderlip voor achter Onderste luchtopening",
+    "Schutbord achter Buitenplaat motorkap",
+    "Bodemplaat neus achter Onderste luchtopening",
+    "Dakspoiler achter Vast panoramaglas",
+    "Achterscherm rechts achter C-stijl rechts",
+    "Portier rechtsachter achter Voorruit",
+    "Portier rechtsvoor achter Buitenplaat motorkap"
+   ],
+   "lucht": []
+  },
+  "roof": {
+   "label": "Solarbay",
+   "labels": 2,
+   "eigen": 2,
+   "vrij": 1,
+   "achter": [
+    "Dakrand achter Vast panoramaglas"
+   ],
+   "lucht": []
+  },
+  "interior": {
+   "label": "Interieur",
+   "labels": 9,
+   "eigen": 9,
+   "vrij": 6,
+   "achter": [
+    "Vloerbedekking achter Middenconsole",
+    "Bagageruimtevloer achter Zitkussen achterbank",
+    "Bagageruimte zijwand rechts achter Zitkussen achterbank"
+   ],
+   "lucht": []
+  },
+  "openHood": {
+   "label": "Motorruimte",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  },
+  "openDoors": {
+   "label": "Instappen",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  },
+  "openTrunk": {
+   "label": "Bagageruimte",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  },
+  "openCharge": {
+   "label": "Laadpoort",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  },
+  "openAll": {
+   "label": "Alles open",
+   "labels": 0,
+   "eigen": 0,
+   "vrij": 0,
+   "achter": [],
+   "lucht": []
+  }
+ }
+}

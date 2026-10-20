@@ -1,0 +1,135 @@
+{
+ "totaal": 68874,
+ "perGroep": {
+  "Carrosserie": 18750,
+  "Interieur": 8076,
+  "Aandrijflijn": 7648,
+  "Onderstel": 22420,
+  "Koeling en luchtinlaat": 1416,
+  "Uitlaatsysteem": 12,
+  "Brandstofsysteem": 12,
+  "Elektrisch systeem": 10540
+ },
+ "onderdelen": {
+  "Carrosserie": 95,
+  "Interieur": 26,
+  "Aandrijflijn": 31,
+  "Onderstel": 60,
+  "Koeling en luchtinlaat": 5,
+  "Uitlaatsysteem": 1,
+  "Brandstofsysteem": 1,
+  "Elektrisch systeem": 36
+ },
+ "zwaarste": [
+  [
+   "Wiel rechtsvoor / Band",
+   1344
+  ],
+  [
+   "Wiel rechtsachter / Band",
+   1344
+  ],
+  [
+   "Wiel linksvoor / Band",
+   1344
+  ],
+  [
+   "Wiel linksachter / Band",
+   1344
+  ],
+  [
+   "Carrosserie / Voorscherm rechts",
+   784
+  ],
+  [
+   "Wiel rechtsvoor / Velgrand",
+   768
+  ],
+  [
+   "Wiel rechtsachter / Velgrand",
+   768
+  ],
+  [
+   "Wiel linksvoor / Velgrand",
+   768
+  ],
+  [
+   "Wiel linksachter / Velgrand",
+   768
+  ],
+  [
+   "Vooras en stuurinrichting / Schroefveer rechts",
+   700
+  ],
+  [
+   "Vooras en stuurinrichting / Schroefveer links",
+   700
+  ],
+  [
+   "Achteras / Schroefveer rechts",
+   700
+  ],
+  [
+   "Achteras / Schroefveer links",
+   700
+  ],
+  [
+   "Carrosserie / Achterscherm rechts",
+   688
+  ],
+  [
+   "Carrosserie / Voorscherm links",
+   688
+  ],
+  [
+   "Carrosserie / Achterscherm links",
+   688
+  ],
+  [
+   "Stator / Statorpakket",
+   640
+  ],
+  [
+   "Dashboard / Stuurwiel",
+   576
+  ],
+  [
+   "Elektrisch systeem / Hoogspanningskabel",
+   512
+  ],
+  [
+   "Aandrijfas rechts / Stofbalg",
+   400
+  ],
+  [
+   "Aandrijfas links / Stofbalg",
+   400
+  ],
+  [
+   "Carrosserie / Wielkastrand rechtsvoor",
+   384
+  ],
+  [
+   "Carrosserie / Wielkastrand rechtsachter",
+   384
+  ],
+  [
+   "Carrosserie / Wielkastrand linksvoor",
+   384
+  ],
+  [
+   "Carrosserie / Wielkastrand linksachter",
+   384
+  ]
+ ],
+ "budgetten": {
+  "totaal": 180000,
+  "Carrosserie": 40000,
+  "Interieur": 35000,
+  "Aandrijflijn": 30000,
+  "Onderstel": 60000,
+  "Koeling en luchtinlaat": 10000,
+  "Elektrisch systeem": 20000
+ },
+ "fouten": []
+}

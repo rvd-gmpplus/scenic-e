@@ -18,6 +18,7 @@ Er zijn 21 presets, waaronder `?preset=battery`, `?preset=engine`, `?preset=char
 
 ```sh
 bash tools/setup.sh
+python3 -m pip install -r requirements-visuals.txt
 python3 build.py --lint
 python3 build.py
 python3 tools/framework.py check

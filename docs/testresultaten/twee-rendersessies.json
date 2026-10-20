@@ -1,0 +1,87 @@
+{
+ "drempel": 1.5,
+ "tolerantie": 16,
+ "schaal": 2,
+ "beelden": {
+  "01-assembled.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "02-main.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "03-bodyOff.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "04-xray.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "05-everything.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "06-battery.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "07-engine.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "08-drive.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "09-charging.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "10-cooling.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "11-chassis.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "12-wheel.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "13-body.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "14-roof.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "15-interior.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "16-openHood.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "17-openDoors.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "18-openTrunk.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "19-openCharge.png": {
+   "ok": true,
+   "procent": 0.0
+  },
+  "20-openAll.png": {
+   "ok": true,
+   "procent": 0.0
+  }
+ }
+}

@@ -1,0 +1,46 @@
+name: Acceptatie
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['src/**', 'auto.json', 'index.html', 'data/**', 'docs/baseline/**', 'requirements*.txt', '.github/workflows/acceptance.yml']
+  pull_request:
+    paths: ['src/**', 'auto.json', 'index.html', 'data/**', 'docs/baseline/**', 'requirements*.txt', '.github/workflows/acceptance.yml']
+permissions:
+  contents: read
+concurrency:
+  group: acceptance-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  volledig:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      MODEL_TIMEOUT_MS: '300000'
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Testomgeving
+        run: |
+          python3 -m pip install --quiet -r requirements-visuals.txt
+          python3 -m playwright install --with-deps chromium
+          python3 tools/harness.py --ensure-three
+      - name: Framework en onderdelenboom
+        run: |
+          python3 tools/framework.py check
+          python3 tools/pncheck.py --tree
+      - name: Volledige ongewijzigde frameworktestset
+        run: bash tools/orkestratie/finaltests.sh uit/acceptatie
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: acceptatieresultaten
+          path: uit/acceptatie
+          retention-days: 7
