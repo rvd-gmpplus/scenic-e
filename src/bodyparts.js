@@ -74,10 +74,13 @@ function buildBodDoor(s, front) {
   const shell = [
     [z0, 0.49],
     [z1, 0.49],
-    [z1, 1.055],
-    [z0, 1.08],
+    [z1, front ? 1.057 : 1.082],
+    [z0, front ? 1.082 : 1.096],
   ];
   const pivot = [s * 0.91, 0.75, z1 + 0.01];
+  const bandZ = front ? z0 : -1.16,
+    bandFront = front ? 1.06 : 1.085,
+    bandRear = front ? 1.085 : 1.105;
   return A(
     n,
     {
@@ -96,6 +99,40 @@ function buildBodDoor(s, front) {
         d: "Gelakt portierpaneel met een aparte opening in de vaste carrosserie.",
         ex: [s * 0.15, 0, 0],
       }),
+      ...(!front
+        ? [
+            P(
+              "Bovenhoek buitenpaneel",
+              bodSide(s, [
+                [z0, 1.037],
+                [-1.155, 1.037],
+                [-1.155, 1.102],
+                [z0, 1.096],
+              ]),
+              MAT.bodPaint,
+              {
+                d: "Gelakte bovenhoek van het achterportier boven de voorrand van de achterste wielkast; contour geschat.",
+                ex: [s * 0.16, 0.08, 0],
+              },
+            ),
+          ]
+        : []),
+      P(
+        "Raamvoet en bovendorpel",
+        G.rbox(
+          0.018,
+          0.05,
+          Math.hypot(z1 - bandZ, bandRear - bandFront),
+          0.005,
+        ),
+        MAT.rubber,
+        {
+          d: "Zwarte bovendorpel met raamvoetafdichting langs de onderrand van het glas; profiel en doorsnede geschat.",
+          p: [s * 0.912, (bandFront + bandRear) / 2, (z1 + bandZ) / 2],
+          r: [Math.atan2(bandRear - bandFront, z1 - bandZ), 0, 0],
+          ex: [s * 0.12, 0.08, 0],
+        },
+      ),
       P("Zijruit", bodSide(s, upper), MAT.bodGlass, {
         d: "Donkere zijruit; profiel en tint geschat.",
         ex: [s * 0.1, 0.2, 0],

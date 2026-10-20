@@ -1,6 +1,6 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></head><body>
 <title>Scénic E-Tech electric explosietekening</title>
-<meta name="model-version" content="1 (bron 4a19bd5)">
+<meta name="model-version" content="1 (bron 1143a8e)">
 <meta name="description" content="Interactieve 3D-explosietekening van de Renault Scénic E-Tech electric, actuele MY26 long range als basis voor 2026/2027. Met accupakket, elektromotor, interieur en openende portieren.">
 <meta property="og:title" content="Scénic E-Tech electric explosietekening">
 <meta property="og:description" content="Verken de elektrische Scénic: uitklapbare onderdelen, accupakket en openende portieren.">
@@ -618,7 +618,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
   <div id="press" hidden><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28"/></svg></div>
   <div id="helpDlg" hidden><div class="dlg" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
     <h2 id="helpTitle">Bediening</h2>
-    <p class="ver">Scénic E-Tech electric explosietekening, versie 1 (bron 4a19bd5)</p>
+    <p class="ver">Scénic E-Tech electric explosietekening, versie 1 (bron 1143a8e)</p>
     <div id="helpMouse"><h3>Met de muis</h3><dl>
       <dt>Klik</dt><dd>De groep van het onderdeel klapt uit; de rest blijft staan. Staat die groep al open, dan wordt het onderdeel uitgelicht.</dd>
       <dt>Dubbelklik</dt><dd>Direct naar dit onderdeel: alle groepen erboven gaan laag voor laag open.</dd>
@@ -1736,10 +1736,13 @@ function buildBodDoor(s, front) {
   const shell = [
     [z0, 0.49],
     [z1, 0.49],
-    [z1, 1.055],
-    [z0, 1.08],
+    [z1, front ? 1.057 : 1.082],
+    [z0, front ? 1.082 : 1.096],
   ];
   const pivot = [s * 0.91, 0.75, z1 + 0.01];
+  const bandZ = front ? z0 : -1.16,
+    bandFront = front ? 1.06 : 1.085,
+    bandRear = front ? 1.085 : 1.105;
   return A(
     n,
     {
@@ -1758,6 +1761,40 @@ function buildBodDoor(s, front) {
         d: "Gelakt portierpaneel met een aparte opening in de vaste carrosserie.",
         ex: [s * 0.15, 0, 0],
       }),
+      ...(!front
+        ? [
+            P(
+              "Bovenhoek buitenpaneel",
+              bodSide(s, [
+                [z0, 1.037],
+                [-1.155, 1.037],
+                [-1.155, 1.102],
+                [z0, 1.096],
+              ]),
+              MAT.bodPaint,
+              {
+                d: "Gelakte bovenhoek van het achterportier boven de voorrand van de achterste wielkast; contour geschat.",
+                ex: [s * 0.16, 0.08, 0],
+              },
+            ),
+          ]
+        : []),
+      P(
+        "Raamvoet en bovendorpel",
+        G.rbox(
+          0.018,
+          0.05,
+          Math.hypot(z1 - bandZ, bandRear - bandFront),
+          0.005,
+        ),
+        MAT.rubber,
+        {
+          d: "Zwarte bovendorpel met raamvoetafdichting langs de onderrand van het glas; profiel en doorsnede geschat.",
+          p: [s * 0.912, (bandFront + bandRear) / 2, (z1 + bandZ) / 2],
+          r: [Math.atan2(bandRear - bandFront, z1 - bandZ), 0, 0],
+          ex: [s * 0.12, 0.08, 0],
+        },
+      ),
       P("Zijruit", bodSide(s, upper), MAT.bodGlass, {
         d: "Donkere zijruit; profiel en tint geschat.",
         ex: [s * 0.1, 0.2, 0],
