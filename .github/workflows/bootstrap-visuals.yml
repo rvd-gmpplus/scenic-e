@@ -28,7 +28,7 @@ jobs:
           cache: pip
       - name: Testomgeving
         run: |
-          python3 -m pip install --quiet -r requirements.txt
+          python3 -m pip install --quiet -r requirements-visuals.txt
           python3 -m playwright install --with-deps chromium
           python3 tools/harness.py --ensure-three
       - name: Bron en onderdelenboom
