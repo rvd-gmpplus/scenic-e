@@ -1,5 +1,5 @@
 # Overdracht
 
-Eerste schematische Scénic-implementatie. Start met README.md, docs/teststatus.md en docs/contract.md. Het framework is overgenomen uit laguna3 versie 17; de generieke laag blijft gelijk. Voor verdere verfijning zijn een onafhankelijke fotoreferentie, echte componentposities en verificatie van een aparte MY27-uitvoering nodig.
+Scénic E-Tech electric, actuele MY26 EV89 als basis voor 2026/2027, op de 49 ongewijzigde frameworkbestanden van laguna3 versie 17. Lees README.md, docs/contract.md en docs/teststatus.md.
 
-Repositorycreatie via de huidige GitHub-koppeling gaf `Resource not accessible by integration (createRepository)`. De lokale Git-repo en een overdraagbaar Git-bundle blijven beschikbaar; het bestaan van een externe repo mag pas na een succesvolle API- of pushcontrole worden gemeld.
+GitHub: https://github.com/rvd-gmpplus/scenic-e. De eerste bron en de herstelrondes zijn afzonderlijk gecommit. De laatste kwaliteitsmetingen en regressiebasis worden in de teststatus bijgehouden. Voor verdere nauwkeurigheid zijn een onafhankelijke fotoreferentie, werkelijke componentposities en een afzonderlijke MY27-specificatie nodig. Geen onderdeelnummers geverifieerd.

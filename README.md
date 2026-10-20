@@ -27,6 +27,12 @@ bash tools/orkestratie/finaltests.sh uit/volledig
 
 `src/` bevat alle geometrie; er zijn geen externe modelbestanden. `auto.json` bevat alle voertuigteksten. Het framework hanteert acht vaste hoofdgroepen: de legacy-groepen Uitlaatsysteem en Brandstofsysteem bevatten uitsluitend een informatienoot dat deze systemen niet aanwezig zijn. Het model bevat geen tank, uitlaat of verbrandingsmotor.
 
+## GitHub en overdracht
+
+Repository: [rvd-gmpplus/scenic-e](https://github.com/rvd-gmpplus/scenic-e). De actuele kwaliteitspoorten staan in [teststatus.md](docs/teststatus.md). Een eerste schematische versie is geen gevalideerd Renault-CAD-model.
+
+Bij overdracht via een Git-bundle: `git clone scenic-e.bundle scenic-e`. In die kloon wijst `origin` eerst naar het bundlebestand; gebruik `git remote set-url origin https://github.com/rvd-gmpplus/scenic-e.git` om verder te werken met GitHub.
+
 ## Nauwkeurigheid en verificatie
 
 Dit is een schematische technische visualisatie, geen Renault-CAD, homologatiemodel of montagehandleiding. Gepubliceerde hoofdmaten begrenzen het model; paneelprofielen, scharnierhoeken, interne geometrie en componentplaatsen zijn geschat. De silhouetcontrole bewaakt een ontwerpreferentie, geen onafhankelijk gemeten fotoreferentie. Zie [bouwcontract](docs/contract.md), [teststatus](docs/teststatus.md) en [cijfers](docs/cijfers.md).

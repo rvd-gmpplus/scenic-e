@@ -6,7 +6,7 @@ Actuele Nederlandse MY26 EV89 long range. Modeljaar 2027 niet afzonderlijk beves
 
 ## Geometrie
 
-`body.js` levert de maatconstanten, paneeltriangulatie, kooi en vaste carrosserie. `bodyparts.js` levert portieren, kleppen en lichtsignaturen; `panorama.js` het vaste dak. Panelen hebben een schematische huid; interne dwarsdoorsneden zijn niet uit CAD afgeleid. De wielbogen blijven vrij van de gelakte zijschermen.
+`body.js` levert de maatconstanten, paneeltriangulatie, kooi en vaste carrosserie. `bodyparts.js` levert portieren, kleppen en lichtsignaturen; `panorama.js` het vaste dak. Panelen hebben een schematische huid; interne dwarsdoorsneden zijn niet uit CAD afgeleid. De wielbogen blijven vrij van de gelakte zijschermen. Wielkuipen, schutbord en onderplaten sluiten de motorruimte af. Het rechter voorscherm heeft een echte opening achter de laadklep. Vaste driehoeksruiten en stijlafwerking sluiten de portier- en achterklepranden.
 
 `engine1.js` levert Motor E-Tech, `engine2.js` de Omvormer en `drivetrain.js` de vaste reductie en aandrijfassen. `systems.js` bevat de tractieaccu, lader, CCS-connector, boordvoeding en thermisch beheer. Alle domeinen maken uitsluitend A/P-knopen met Nederlandse beschrijvingen, eindige geometrie en uitklapvectoren.
 
