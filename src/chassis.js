@@ -84,7 +84,7 @@ function chsAxle(front) {
           MAT.darkSteel,
           {
             d: "Schematische telescopische schokdemper.",
-            p: [s * 0.64, 0.58, z],
+            p: [s * 0.64, front ? 0.58 : 0.4, z],
             ex: [s * 0.15, 0.1, 0],
           },
         ),
@@ -94,7 +94,7 @@ function chsAxle(front) {
           MAT.iron,
           {
             d: "Schematische schroefveer; windingaantal en veerconstante niet geverifieerd.",
-            p: [s * 0.64, 0.65, z],
+            p: [s * 0.64, front ? 0.65 : 0.475, z],
             ex: [s * 0.25, 0.2, 0],
           },
         ),

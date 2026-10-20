@@ -50,14 +50,40 @@ function HW(z) {
     clamp((Math.abs(z) - 1.8) / 0.435, 0, 1),
   );
 }
-function bodSide(s, pts) {
-  return bodPanel(
-    pts.map(([z, y]) => [
+// Onderverdeling volgt de gebogen huid ook binnen grote driehoeken.
+function bodSide(s, pts, holes = []) {
+  const poly = pts.map(([z, y]) => new THREE.Vector2(z, y)),
+    holePolys = holes.map((h) => h.map(([z, y]) => new THREE.Vector2(z, y))),
+    all = pts.concat(holes.flat());
+  const triangles = THREE.ShapeUtils.triangulateShape(poly, holePolys),
+    v = [],
+    N = 4;
+  const at = (t, i, j) => {
+    const a = 1 - (i + j) / N,
+      b = i / N,
+      c = j / N,
+      z = all[t[0]][0] * a + all[t[1]][0] * b + all[t[2]][0] * c,
+      y = all[t[0]][1] * a + all[t[1]][1] * b + all[t[2]][1] * c;
+    return [
       s * (y > 1.1 ? lerp(HW(z), 0.775, clamp((y - 1.1) / 0.45, 0, 1)) : HW(z)),
       y,
       z,
-    ]),
-  );
+    ];
+  };
+  for (const t of triangles)
+    for (let i = 0; i < N; i++)
+      for (let j = 0; j < N - i; j++) {
+        v.push(...at(t, i, j), ...at(t, i + 1, j), ...at(t, i, j + 1));
+        if (i + j < N - 1)
+          v.push(
+            ...at(t, i + 1, j),
+            ...at(t, i + 1, j + 1),
+            ...at(t, i, j + 1),
+          );
+      }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute("position", new THREE.Float32BufferAttribute(v, 3));
+  return weldAll(g);
 }
 function bodBar(name, a, b, width, mat, d, ex = [0, 0.1, 0]) {
   const v = V3(...b).sub(V3(...a));
@@ -106,7 +132,20 @@ function bodFender(s, z, front) {
   if (z0 < lo) poly.push([z0, 0.38]);
   return P(
     (front ? "Voorscherm " : "Achterscherm ") + sideName(s),
-    bodSide(s, poly),
+    bodSide(
+      s,
+      poly,
+      s < 0 && front
+        ? [
+            [
+              [1.052, 0.858],
+              [1.252, 0.858],
+              [1.252, 1.022],
+              [1.052, 1.022],
+            ],
+          ]
+        : [],
+    ),
     MAT.bodPaint,
     {
       d: "Gevouwen zijscherm met vrije wielboog; vorm afgeleid van de carrosseriefoto.",
@@ -178,6 +217,10 @@ function buildBody() {
       bodArch(s, AXF),
       bodArch(s, AXR),
     ]),
+    ...bodFixedGlazing(),
+    ...bodShoulders(),
+    ...bodWheelLiners(),
+    ...bodEngineBay(),
     buildBodHood(),
     buildBodTailgate(),
     ...[-1, 1].flatMap((s) => [buildBodDoor(s, true), buildBodDoor(s, false)]),
@@ -254,4 +297,157 @@ function buildBody() {
     },
     kids,
   );
+}
+
+// Afwerking van de motorruimte: kuipen schermen de banden af, bodemplaten sluiten de onderzijde.
+function bodWheelLiners() {
+  return [-1, 1].flatMap((s) =>
+    [AXF, AXR].flatMap((z) => {
+      const name = sideName(s) + (z > 0 ? "voor" : "achter"),
+        pts = [];
+      for (let i = 0; i <= 32; i++) {
+        const a = (i / 32) * PI;
+        pts.push([
+          s * 0.655,
+          0.365 + 0.405 * Math.sin(a),
+          z + 0.405 * Math.cos(a),
+        ]);
+      }
+      return [
+        P("Wielkuip " + name, G.half("x", 0.405, 0.22, PI, 32), MAT.plastic, {
+          d: "Schematische gebogen wielkastvoering boven de band, zichtbaar vanuit de wielopening.",
+          p: [s * 0.77, 0.365, z],
+          ex: [s * 0.18, 0.15, 0],
+        }),
+        P("Binnenwand wielkuip " + name, bodPanel(pts), MAT.plastic, {
+          d: "Schematische binnenwand die de wielopening afsluit naar de cabine of motorruimte.",
+          ex: [-s * 0.15, 0, 0],
+        }),
+      ];
+    }),
+  );
+}
+function bodEngineBay() {
+  return [
+    P("Bodemplaat motorruimte", G.rbox(1.3, 0.018, 1.1, 0.008), MAT.plastic, {
+      d: "Schematische onderste afscherming onder de elektrische aandrijving; houdt de wielopeningen vrij.",
+      p: [0, 0.235, 1.625],
+      ex: [0, -0.2, 0],
+    }),
+    P("Bodemplaat neus", G.rbox(1.64, 0.018, 0.34, 0.008), MAT.plastic, {
+      d: "Schematische voorste onderplaat tussen de bumper en de wielkuipen.",
+      p: [0, 0.235, 1.995],
+      ex: [0, -0.25, 0.1],
+    }),
+    P("Schutbord", G.rbox(1.63, 0.48, 0.035, 0.012), MAT.darkSteel, {
+      d: "Schematisch schutbord tussen de motorruimte en de voetenruimte.",
+      p: [0, 0.74, 1.08],
+      ex: [0, 0.2, -0.15],
+    }),
+  ];
+}
+function bodShoulders() {
+  return [-1, 1]
+    .map((s) => {
+      const v = [],
+        ix = [],
+        N = 16;
+      for (let j = 0; j <= N; j++) {
+        const t = j / N,
+          z = lerp(1.11, 2.15, t),
+          w = lerp(0.87, 0.84, t) + 0.004,
+          y = lerp(1.065, 1.036, t) - 0.004;
+        v.push(s * w, y, z, s * HW(z), 1.035, z);
+      }
+      for (let j = 0; j < N; j++) {
+        const k = j * 2;
+        ix.push(k, k + 1, k + 2, k + 1, k + 3, k + 2);
+      }
+      const g = new THREE.BufferGeometry();
+      g.setAttribute("position", new THREE.Float32BufferAttribute(v, 3));
+      g.setIndex(ix);
+      g.computeVertexNormals();
+      return P("Kaprand " + sideName(s), g, MAT.bodPaint, {
+        d: "Vaste gelakte rand tussen het voorscherm en de motorkap; een smalle naad laat de kap vrij bewegen.",
+        ex: [s * 0.15, 0.12, 0],
+      });
+    })
+    .concat([
+      P(
+        "Neusrand",
+        bodPanel([
+          [-0.844, 1.031, 2.156],
+          [0.844, 1.031, 2.156],
+          [0.858, 0.97, 2.228],
+          [-0.858, 0.97, 2.228],
+        ]),
+        MAT.bodPaint,
+        {
+          d: "Schematische gelakte verbindingsrand boven de bumper, onder de sluitnaad van de motorkap.",
+          ex: [0, 0.1, 0.2],
+        },
+      ),
+    ]);
+}
+
+// Vaste driehoeksruiten en de afwerking rondom de portier- en achterklepopeningen.
+function bodFixedGlazing() {
+  return [-1, 1].flatMap((s) => [
+    P(
+      "Voorste driehoeksruit " + sideName(s),
+      bodSide(s, [
+        [1.04, 1.06],
+        [0.55, 1.515],
+        [0.52, 1.517],
+        [0.83, 1.06],
+      ]),
+      MAT.bodGlass,
+      {
+        d: "Schematische vaste driehoeksruit tussen de A-stijl en het voorportier; profiel geschat.",
+        ex: [s * 0.15, 0.15, 0],
+      },
+    ),
+    P(
+      "Voorflank C-stijl " + sideName(s),
+      bodSide(s, [
+        [-0.83, 1.535],
+        [-0.98, 1.54],
+        [-1.28, 1.075],
+        [-1.165, 1.105],
+      ]),
+      MAT.bodPaint,
+      {
+        d: "Schematische afwerking van de vaste stijl langs de achterrand van het achterportier.",
+        ex: [s * 0.15, 0.12, 0],
+      },
+    ),
+    P(
+      "Vaste achterzijruit " + sideName(s),
+      bodSide(s, [
+        [-1.18, 1.5],
+        [-1.29, 1.5],
+        [-2.14, 1.082],
+        [-1.78, 1.06],
+      ]),
+      MAT.bodGlass,
+      {
+        d: "Schematisch vast glasvlak achter de C-stijl. Geen opener; de contour is benaderd.",
+        ex: [s * 0.2, 0.15, -0.1],
+      },
+    ),
+    P(
+      "Achterklepstijl " + sideName(s),
+      bodPanel([
+        [s * 0.76, 1.51, -1.31],
+        [s * 0.84, 1.085, -2.15],
+        [s * 0.914, 1.035, -2.23],
+        [s * 0.78, 1.53, -1.2],
+      ]),
+      MAT.bodPaint,
+      {
+        d: "Schematische vaste stijl rond de zijrand van de achterklep; sluit aan op de achterste glasrand.",
+        ex: [s * 0.2, 0.1, -0.1],
+      },
+    ),
+  ]);
 }

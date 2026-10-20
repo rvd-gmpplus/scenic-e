@@ -21,9 +21,17 @@ const PRESETS = [
     cat: "Overzicht",
     label: "Hoofdgroepen",
     key: "1",
-    note: "De acht frameworkgroepen uit elkaar. Brandstof en uitlaat zijn niet aanwezig en bevatten alleen een informatienoot.",
+    note: "De zes fysieke hoofdgroepen uit elkaar: carrosserie, interieur, aandrijflijn, onderstel, thermisch beheer en elektrische systemen.",
     open: [appCar],
     labels: appCar,
+    labelOnly: [
+      "Carrosserie",
+      "Interieur",
+      "Aandrijflijn",
+      "Onderstel",
+      "Koeling en luchtinlaat",
+      "Elektrisch systeem",
+    ],
     cam: { dir: [1, 0.55, 1.1], pad: 1.05 },
   },
   {

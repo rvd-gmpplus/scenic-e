@@ -49,27 +49,32 @@ function buildCooling() {
     ],
   );
 }
+std("sysInfo", 0x000000, 0, 1, {
+  transparent: true,
+  opacity: 0,
+  depthWrite: false,
+});
 function sysLegacy(name, text, z) {
   return A(name, { d: text, ex: [0, -0.2, z] }, [
-    P("Niet aanwezig", G.box(0.001, 0.001, 0.001), MAT.plastic, {
+    P("Niet aanwezig", G.box(0.001, 0.001, 0.001), MAT.sysInfo, {
       d: text,
       p: [0, 0.3, z],
       ex: [0, -0.1, 0],
-      inner: true,
+      inner: false,
     }),
   ]);
 }
 function buildExhaust() {
   return sysLegacy(
     "Uitlaatsysteem",
-    "Niet aanwezig: de volledig elektrische Scénic heeft geen verbrandingsmotor, katalysator of uitlaat. Deze informatietak behoudt het achtgroepencontract van het framework.",
+    "Niet aanwezig: de volledig elektrische Scénic heeft geen verbrandingsmotor, katalysator of uitlaat.",
     -0.1,
   );
 }
 function buildFuel() {
   return sysLegacy(
     "Brandstofsysteem",
-    "Niet aanwezig: energie wordt opgeslagen in de tractieaccu, niet in een brandstoftank. Deze informatietak behoudt het achtgroepencontract van het framework.",
+    "Niet aanwezig: energie wordt opgeslagen in de tractieaccu, niet in een brandstoftank.",
     0.1,
   );
 }
@@ -181,7 +186,7 @@ function buildElectrical() {
           }),
           P(
             "CCS-laadaansluiting",
-            G.rbox(0.06, 0.13, 0.12, 0.014),
+            G.rbox(0.06, 0.175, 0.215, 0.014),
             MAT.blackGloss,
             {
               d: "Schematische gecombineerde AC/DC-laadpoort achter de laadklep.",

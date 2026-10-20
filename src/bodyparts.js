@@ -10,7 +10,7 @@ function bodBonnet() {
       w = lerp(0.87, 0.84, t);
     for (let i = 0; i <= nx; i++) {
       const u = (i / nx) * 2 - 1;
-      v.push(w * u, lerp(1.065, 1.04, t) + 0.012 * (1 - u * u), z);
+      v.push(w * u, lerp(1.065, 1.036, t) + 0.012 * (1 - u * u), z);
     }
   }
   for (let j = 0; j < nz; j++)
@@ -184,9 +184,9 @@ function buildBodTailgate() {
         MAT.bodGlass,
         { d: "Aflopende achterruit onder de dakspoiler.", ex: [0, 0.2, -0.1] },
       ),
-      P("Klepplaat", G.rbox(1.67, 0.28, 0.045, 0.015), MAT.bodPaint, {
+      P("Klepplaat", G.rbox(1.67, 0.2, 0.045, 0.015), MAT.bodPaint, {
         d: "Gelakte onderste klepplaat tussen achterruit en bumper.",
-        p: [0, 0.93, -2.19],
+        p: [0, 0.98, -2.19],
         ex: [0, 0, -0.18],
       }),
       P("Derde remlicht", G.rbox(0.48, 0.016, 0.018, 0.004), MAT.lensRed, {
