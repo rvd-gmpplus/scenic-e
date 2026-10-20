@@ -1,6 +1,6 @@
 <!doctype html><html lang="nl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"></head><body>
 <title>Scénic E-Tech electric explosietekening</title>
-<meta name="model-version" content="1 (bron 1143a8e)">
+<meta name="model-version" content="1 (bron 0c29ab9)">
 <meta name="description" content="Interactieve 3D-explosietekening van de Renault Scénic E-Tech electric, actuele MY26 long range als basis voor 2026/2027. Met accupakket, elektromotor, interieur en openende portieren.">
 <meta property="og:title" content="Scénic E-Tech electric explosietekening">
 <meta property="og:description" content="Verken de elektrische Scénic: uitklapbare onderdelen, accupakket en openende portieren.">
@@ -618,7 +618,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
   <div id="press" hidden><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="28"/></svg></div>
   <div id="helpDlg" hidden><div class="dlg" role="dialog" aria-modal="true" aria-labelledby="helpTitle">
     <h2 id="helpTitle">Bediening</h2>
-    <p class="ver">Scénic E-Tech electric explosietekening, versie 1 (bron 1143a8e)</p>
+    <p class="ver">Scénic E-Tech electric explosietekening, versie 1 (bron 0c29ab9)</p>
     <div id="helpMouse"><h3>Met de muis</h3><dl>
       <dt>Klik</dt><dd>De groep van het onderdeel klapt uit; de rest blijft staan. Staat die groep al open, dan wordt het onderdeel uitgelicht.</dd>
       <dt>Dubbelklik</dt><dd>Direct naar dit onderdeel: alle groepen erboven gaan laag voor laag open.</dd>
@@ -1425,6 +1425,7 @@ function buildBody() {
       bodArch(s, AXF),
       bodArch(s, AXR),
     ]),
+    ...bodRearBelt(),
     ...bodFixedGlazing(),
     ...bodShoulders(),
     ...bodWheelLiners(),
@@ -1658,6 +1659,30 @@ function bodFixedGlazing() {
       },
     ),
   ]);
+}
+
+// Doorlopende raamvoet onder het vaste achterste zijglas en de C-stijl.
+function bodRearBelt() {
+  return [-1, 1].map((s) =>
+    P(
+      "Raamvoet achterste zijwand " + sideName(s),
+      bodSide(s, [
+        [-1.17, 1.035],
+        [-2.22, 1.035],
+        [-2.22, 1.09],
+        [-2.14, 1.107],
+        [-1.78, 1.085],
+        [-1.28, 1.1],
+        [-1.17, 1.13],
+      ]),
+      MAT.bodRoof,
+      {
+        d: "Zwarte raamvoetafwerking onder het vaste achterste zijglas en de C-stijl; profiel geschat. Sluit aan op de gordellijn van het portier.",
+        p: [s * 0.001, 0, 0],
+        ex: [s * 0.18, 0.08, -0.1],
+      },
+    ),
+  );
 }
 
 // Licht gekroond oppervlak met smalle schouders; paneelvorm geschat.

@@ -217,6 +217,7 @@ function buildBody() {
       bodArch(s, AXF),
       bodArch(s, AXR),
     ]),
+    ...bodRearBelt(),
     ...bodFixedGlazing(),
     ...bodShoulders(),
     ...bodWheelLiners(),
@@ -450,4 +451,28 @@ function bodFixedGlazing() {
       },
     ),
   ]);
+}
+
+// Doorlopende raamvoet onder het vaste achterste zijglas en de C-stijl.
+function bodRearBelt() {
+  return [-1, 1].map((s) =>
+    P(
+      "Raamvoet achterste zijwand " + sideName(s),
+      bodSide(s, [
+        [-1.17, 1.035],
+        [-2.22, 1.035],
+        [-2.22, 1.09],
+        [-2.14, 1.107],
+        [-1.78, 1.085],
+        [-1.28, 1.1],
+        [-1.17, 1.13],
+      ]),
+      MAT.bodRoof,
+      {
+        d: "Zwarte raamvoetafwerking onder het vaste achterste zijglas en de C-stijl; profiel geschat. Sluit aan op de gordellijn van het portier.",
+        p: [s * 0.001, 0, 0],
+        ex: [s * 0.18, 0.08, -0.1],
+      },
+    ),
+  );
 }
